@@ -15,16 +15,16 @@ public class UsuarioEmpresaRepository : RepositoryBase<UsuarioEmpresa>, IUsuario
     public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuario(int cpf)
         => await DbSet
             .AsNoTrackingWithIdentityResolution()
-            .Where(ue => ue.Usuario.Cpf == cpf)
-            .Select(ue => ue.Empresa)
+            .Where(ue => ue.Usuarios.Cpf == cpf)
+            .Select(ue => ue.Empresas)
             .OrderBy(e=>e.Cnpj)
             .ToListAsync();
 
     public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresa(string cnpj)
         => await DbSet
             .AsNoTrackingWithIdentityResolution()
-            .Where(ue => ue.Empresa.Cnpj == cnpj)
-            .Select(ue => ue.Usuario)
+            .Where(ue => ue.Empresas.Cnpj == cnpj)
+            .Select(ue => ue.Usuarios)
             .OrderBy(u => u.Cpf)
             .ToListAsync();
 }

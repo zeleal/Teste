@@ -19,6 +19,9 @@ namespace Domain.Entities
         public string Nome { get; private init; }
         public int Ibge { get; private init; }
 
+        //Relaçao do EF
+
         public Estado Estado { get; private init; }
+        public IReadOnlyList<Endereco> Enderecos { get; private init; }
     }
 }

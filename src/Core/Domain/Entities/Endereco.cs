@@ -25,5 +25,6 @@ namespace Domain.Entities
 
         //Relaçao do EF
         public Usuario Usuario { get; private init; }
+        public Cidade Cidade { get; private init; }
     }
 }

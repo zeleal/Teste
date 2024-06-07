@@ -16,7 +16,7 @@ namespace Domain.Entities
         public Guid EmpresaId { get; private init; }
 
         //Relaçao do EF
-        public Usuario Usuario { get; private init; }
-        public Empresa Empresa { get; private init; }
+        public Usuario Usuarios { get; private init; }
+        public Empresa Empresas { get; private init; }
     }
 }
