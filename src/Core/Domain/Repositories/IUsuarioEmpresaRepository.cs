@@ -5,7 +5,7 @@ namespace Domain.Repositories
 {
     public interface IUsuarioEmpresaRepository : IRepository
     {
-        Task<IEnumerable<Empresa>> ObterEmpresaPorUsuario(string cpf);
+        Task<IEnumerable<Empresa>> ObterEmpresaPorUsuario(int cpf);
         Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresa (string cnpj);
     }
 }
