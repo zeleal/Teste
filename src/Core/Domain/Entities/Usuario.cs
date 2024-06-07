@@ -29,6 +29,7 @@ namespace Domain.Entities
         public string Senha { get; private init; }
 
         //Relaçao do EF
+        public Endereco Endereco { get; private init; }
         public IReadOnlyList<UsuarioEmpresa> UsuarioEmpresas { get; private init; }
     }
 }
