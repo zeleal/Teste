@@ -19,7 +19,7 @@ namespace Domain.Entities
         {
         }
 
-        public Guid EnderecoId { get; set; }
+        public Guid EnderecoId { get; private init; }
         public string Nome { get; private init; }
         public DateTime DataNascimento { get; private init; }
         public string NomePai { get; private init; }
