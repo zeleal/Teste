@@ -29,4 +29,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Requests\EmpresaRequests\" />
+    <Folder Include="Requests\UsuarioEmpresaRequests\" />
+    <Folder Include="Requests\UsuarioRequests\" />
+  </ItemGroup>
+
 </Project>
