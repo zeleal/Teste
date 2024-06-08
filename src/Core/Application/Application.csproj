@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Requests\EmpresaRequests\" />
-    <Folder Include="Requests\UsuarioEmpresaRequests\" />
     <Folder Include="Requests\UsuarioRequests\" />
   </ItemGroup>
 

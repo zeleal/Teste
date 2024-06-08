@@ -5,6 +5,6 @@ namespace Domain.Repositories
 {
     public interface IEnderecoRepository : IRepository
     {
-        Task<Endereco> ObterPorUsuario(Guid usuarioId);
+        Task<Endereco> ObterPorUsuarioAsync(Guid usuarioId);
     }
 }

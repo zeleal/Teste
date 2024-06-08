@@ -12,7 +12,7 @@ public class UsuarioEmpresaRepository : RepositoryBase<UsuarioEmpresa>, IUsuario
     {
     }
 
-    public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuario(int cpf)
+    public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(int cpf)
         => await DbSet
             .AsNoTrackingWithIdentityResolution()
             .Where(ue => ue.Usuarios.Cpf == cpf)
@@ -20,7 +20,7 @@ public class UsuarioEmpresaRepository : RepositoryBase<UsuarioEmpresa>, IUsuario
             .OrderBy(e=>e.Cnpj)
             .ToListAsync();
 
-    public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresa(string cnpj)
+    public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresaAsync(string cnpj)
         => await DbSet
             .AsNoTrackingWithIdentityResolution()
             .Where(ue => ue.Empresas.Cnpj == cnpj)
