@@ -4,8 +4,9 @@ namespace Domain.Entities
 {
     public class Endereco : BaseEntity
     {
-        public Endereco(Guid cidadeId, string rua, string bairro, string cep, string complemento, int numero)
+        public Endereco(Guid usuarioId,Guid cidadeId, string rua, string bairro, string cep, string complemento, int numero)
         {
+            UsuarioId = usuarioId;
             CidadeId = cidadeId;
             Rua = rua;
             Bairro = bairro;
@@ -15,7 +16,7 @@ namespace Domain.Entities
         }
 
         public Endereco() { }
-
+        public Guid UsuarioId { get; set; }
         public Guid CidadeId { get; private init; }
         public string Rua { get; private init; }
         public string Bairro { get; private init; }

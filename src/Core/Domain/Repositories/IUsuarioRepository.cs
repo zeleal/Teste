@@ -6,5 +6,6 @@ namespace Domain.Repositories
     public interface IUsuarioRepository : IRepository
     {
         Task<IEnumerable<Usuario>> ObterTodosAsync();
+        Task<Usuario> ObterUsuarioEnderecoAsync(Guid id);
     }
 }

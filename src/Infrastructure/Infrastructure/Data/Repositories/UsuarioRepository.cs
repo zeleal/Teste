@@ -16,7 +16,12 @@ namespace Infrastructure.Data.Repositories
             => await DbSet
                 .AsNoTrackingWithIdentityResolution()
                 .Include(e => e.Endereco)
-                .OrderBy(e => e.Nome)
+                .OrderBy(e => e.Cpf)
                 .ToListAsync();
+
+        public async Task<Usuario> ObterUsuarioEnderecoAsync(Guid id)
+            => await DbSet.AsNoTrackingWithIdentityResolution()
+                .Include(c => c.Endereco)
+                .FirstOrDefaultAsync(c => c.Id == id);
     }
 }

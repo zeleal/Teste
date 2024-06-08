@@ -1,9 +1,11 @@
-﻿namespace Domain.Dto
+﻿using Domain.Entities;
+
+namespace Domain.Dto
 {
     public class UsuarioDto
     {
         public Guid Id { get; private init; }
-        public Guid EnderecoId { get; private init; }
+        public Endereco Endereco { get; private init; }
         public string Nome { get; private init; }
         public DateTime DataNascimento { get; private init; }
         public string NomePai { get; private init; }

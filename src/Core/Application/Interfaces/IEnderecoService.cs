@@ -8,6 +8,6 @@ namespace Application.Interfaces
 {
     public interface IEnderecoService : IAppService
     {
-        Task<Result<EnderecoDto>> ObterPorUsuarioAsync(ObterPorUsuarioRequest request);
+        Task<Result<EnderecoDto>> ObterEnderecoPorUsuarioAsync(ObterEnderecoPorUsuarioRequests request);
     }
 }

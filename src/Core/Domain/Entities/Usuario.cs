@@ -4,9 +4,8 @@ namespace Domain.Entities
 {
     public class Usuario : BaseEntity
     {
-        public Usuario(Guid enderecoId, string nome, DateTime dataNascimento, string nomePai, string nomeMae, int cpf, string email, string senha)
+        public Usuario(string nome, DateTime dataNascimento, string nomePai, string nomeMae, int cpf, string email, string senha)
         {
-            EnderecoId = enderecoId;
             Nome = nome;
             DataNascimento = dataNascimento;
             NomePai = nomePai;
@@ -19,7 +18,7 @@ namespace Domain.Entities
         {
         }
 
-        public Guid EnderecoId { get; private init; }
+        public Endereco Endereco { get; private init; }
         public string Nome { get; private init; }
         public DateTime DataNascimento { get; private init; }
         public string NomePai { get; private init; }
@@ -29,7 +28,6 @@ namespace Domain.Entities
         public string Senha { get; private init; }
 
         //Relaçao do EF
-        public Endereco Endereco { get; private init; }
         public IReadOnlyList<UsuarioEmpresa> UsuarioEmpresas { get; private init; }
     }
 }

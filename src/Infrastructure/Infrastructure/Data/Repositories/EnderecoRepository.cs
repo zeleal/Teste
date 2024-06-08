@@ -8,13 +8,10 @@ namespace Infrastructure.Data.Repositories
 {
     public class EnderecoRepository : RepositoryBase<Endereco>, IEnderecoRepository
     {
-        public EnderecoRepository(SgpContext context) : base(context)
-        {
-        }
+        public EnderecoRepository(SgpContext context) : base(context){}
 
-        public async Task<Endereco> ObterPorUsuarioAsync(Guid usuarioId)
+        public async Task<Endereco> ObterEnderecoPorUsuarioAsync(int cpf)
             => await DbSet.AsNoTrackingWithIdentityResolution()
-            .Include(u => u.Usuario.Endereco)
-            .FirstOrDefaultAsync(u => u.Usuario.Id == usuarioId);
+            .FirstOrDefaultAsync(e => e.Usuario.Cpf == cpf);
     }
 }
