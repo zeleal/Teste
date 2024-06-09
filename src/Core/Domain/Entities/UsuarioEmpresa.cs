@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class UsuarioEmpresa :BaseEntity
+    public class UsuarioEmpresa : BaseEntity
     {
-        public int UsuarioId { get; set; }
+        public Guid UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
-        public int EmpresaId { get; set; }
+        public Guid EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
     }
 }

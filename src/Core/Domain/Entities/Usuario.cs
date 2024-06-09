@@ -9,13 +9,16 @@ namespace Domain.Entities
 {
     public class Usuario : BaseEntity
     {
-        public int UsuarioId { get; set; }
         public string Nome { get; set; }
+        public int Cpf { get; set; }
+        public string NomeDaMae { get; set; }
+        public string NomeDoPai { get; set; }
+        public DateTime DataNascimento { get; set; }
         public string Email { get; set; }
 
 
         /* EF Relations */
-        public Endereco Endereco { get; set; } 
+        public Endereco Endereco { get; set; }
         public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; } = new List<UsuarioEmpresa>();
     }
 }
