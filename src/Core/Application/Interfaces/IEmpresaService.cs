@@ -6,6 +6,6 @@ namespace Application.Interfaces
 {
     public interface IEmpresaService : IAppService
     {
-        Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync();
+       // Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync();
     }
 }

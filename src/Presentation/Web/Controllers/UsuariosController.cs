@@ -38,7 +38,7 @@ namespace Web.Controllers
         /// <summary>
         /// Obtém uma lista com todos os Usuarios.
         /// </summary>
-        /// <response code="200">Retorna a lista de regiões.</response>
+        /// <response code="200">Retorna a lista de Usuarios.</response>
         [HttpGet]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]

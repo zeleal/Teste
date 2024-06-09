@@ -20,10 +20,10 @@ public sealed class SgpContext : DbContext
     public DbSet<Cidade> Cidades => Set<Cidade>();
     public DbSet<Estado> Estados => Set<Estado>();
     public DbSet<Regiao> Regioes => Set<Regiao>();
-    public DbSet<Usuario> Usuarios => Set<Usuario>();
-    public DbSet<Empresa> Empresas => Set<Empresa>();
-    public DbSet<UsuarioEmpresa> UsuarioEmpresas => Set<UsuarioEmpresa>();
-    public DbSet<Endereco> Enderecos => Set<Endereco>();
+    //public DbSet<Usuario> Usuarios => Set<Usuario>();
+    //public DbSet<Empresa> Empresas => Set<Empresa>();
+    //public DbSet<UsuarioEmpresa> UsuarioEmpresas => Set<UsuarioEmpresa>();
+    //public DbSet<Endereco> Enderecos => Set<Endereco>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
