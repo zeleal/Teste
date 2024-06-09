@@ -32,5 +32,11 @@ namespace Application.Services
 
             return Result.Success(_mapper.Map<UsuarioDto>(endereco));
         }
+
+        public async Task<Result<IEnumerable<UsuarioDto>>> ObterTodosAsync()
+        {
+            var usuarios = await _repository.ObterTodosAsync();
+            return Result.Success(_mapper.Map<IEnumerable<UsuarioDto>>(usuarios));
+        }
     }
 }

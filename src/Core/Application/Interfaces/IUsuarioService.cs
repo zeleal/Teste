@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface IUsuarioService : IAppService
     {
+        Task<Result<IEnumerable<UsuarioDto>>> ObterTodosAsync();
         Task<Result<UsuarioDto>> ObterUsuarioEnderecoAsync(ObterUsuarioEnderecoRequest request);
     }
 }
