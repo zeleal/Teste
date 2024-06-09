@@ -17,10 +17,10 @@ namespace Application.Services
             _repository = repository;
         }
 
-        //public async Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync()
-        //{
-        //    var empresas = await _repository.ObterTodosAsync();
-        //    return Result.Success(_mapper.Map<IEnumerable<EmpresaDto>>(empresas));
-        //}
+        public async Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync()
+        {
+            var empresas = await _repository.ObterTodosAsync();
+            return Result.Success(_mapper.Map<IEnumerable<EmpresaDto>>(empresas));
+        }
     }
 }

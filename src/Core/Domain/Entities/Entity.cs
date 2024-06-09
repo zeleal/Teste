@@ -1,12 +1,12 @@
 ﻿namespace Domain.Entities
 {
-    public abstract class Entity
-    {
-        protected Entity()
-        {
-            Id = Guid.NewGuid();
-        }
+    //public abstract class Entity
+    //{
+    //    protected Entity()
+    //    {
+    //        Id = Guid.NewGuid();
+    //    }
 
-        public Guid Id { get; set; }
-    }
+    //    public Guid Id { get; set; }
+    //}
 }
