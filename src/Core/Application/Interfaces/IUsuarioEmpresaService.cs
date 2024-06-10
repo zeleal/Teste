@@ -1,4 +1,5 @@
 ﻿using Application.Requests;
+using Application.Requests.UsuarioEmpresaRequests;
 using Ardalis.Result;
 using Domain.Dto;
 using Shared.Abstractions;
@@ -12,10 +13,10 @@ namespace Application.Interfaces
 {
     public interface IUsuarioEmpresaService : IAppService
     {
-        Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(GetByIdRequest request, GetByIdRequest request2);
-        Task<Result<UsuarioEmpresaDto>> ExcluirAsync(GetByIdRequest request, GetByIdRequest request2);
+        Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(ObterUsuarioEmpresaPorIdRequest request);
+        Task<Result<UsuarioEmpresaDto>> ExcluirAsync(ExcluirUsuarioEmpresaRequest request);
         Task<Result<IEnumerable<UsuarioEmpresaDto>>> ObterTodosAsync();
-        Task<Result<UsuarioEmpresaDto>> AdicionarAsync();
-        Task<Result<UsuarioEmpresaDto>> AtualizarAsync();
+        Task<Result<UsuarioEmpresaDto>> AdicionarAsync(AdicionarUsuarioEmpresaRequest request);
+        Task<Result<UsuarioEmpresaDto>> AtualizarAsync(AtualizarUsuarioEmpresaRequest request);
     }
 }
