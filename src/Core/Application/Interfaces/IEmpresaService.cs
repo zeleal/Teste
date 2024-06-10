@@ -9,9 +9,9 @@ namespace Application.Interfaces
     public interface IEmpresaService : IAppService
     {
         Task<Result<EmpresaDto>> ObterPorIdAsync(GetByIdRequest request);
-        Task<Result<EmpresaDto>> ExcluirAsync(ExcluirEmpresaRequest request);
+        Task<EmpresaDto> ExcluirAsync(ExcluirEmpresaRequest request);
         Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync();
-        Task<Result<EmpresaDto>> AdicionarAsync(AdicionarEmpresaRequests request);
-        Task<Result<EmpresaDto>> AtualizarAsync(AtualizarEmpresaRequest request);
+        Task<EmpresaDto> AdicionarAsync(AdicionarEmpresaRequests request);
+        Task<EmpresaDto> AtualizarAsync(AtualizarEmpresaRequest request);
     }
 }

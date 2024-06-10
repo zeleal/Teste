@@ -10,9 +10,9 @@ namespace Application.Interfaces
     public interface IEnderecoService : IAppService
     {
         Task<Result<EnderecoDto>> ObterPorIdAsync(GetByIdRequest request);
-        Task<Result<EnderecoDto>> ExcluirAsync(ExcluirRequest request);
+        Task<EnderecoDto> ExcluirAsync(ExcluirRequest request);
         Task<Result<IEnumerable<EnderecoDto>>> ObterTodosAsync();
-        Task<Result<EnderecoDto>> AdicionarAsync(AdicionarRequest request);
-        Task<Result<EnderecoDto>> AtualizarAsync(AtualizarRequest request);
+        Task<EnderecoDto> AdicionarAsync(AdicionarRequest request);
+        Task<EnderecoDto> AtualizarAsync(AtualizarRequest request);
     }
 }

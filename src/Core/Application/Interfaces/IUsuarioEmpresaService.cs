@@ -14,9 +14,9 @@ namespace Application.Interfaces
     public interface IUsuarioEmpresaService : IAppService
     {
         Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(ObterUsuarioEmpresaPorIdRequest request);
-        Task<Result<UsuarioEmpresaDto>> ExcluirAsync(ExcluirUsuarioEmpresaRequest request);
+        Task<UsuarioEmpresaDto> ExcluirAsync(ExcluirUsuarioEmpresaRequest request);
         Task<Result<IEnumerable<UsuarioEmpresaDto>>> ObterTodosAsync();
-        Task<Result<UsuarioEmpresaDto>> AdicionarAsync(AdicionarUsuarioEmpresaRequest request);
-        Task<Result<UsuarioEmpresaDto>> AtualizarAsync(AtualizarUsuarioEmpresaRequest request);
+        Task<UsuarioEmpresaDto> AdicionarAsync(AdicionarUsuarioEmpresaRequest request);
+        Task<UsuarioEmpresaDto> AtualizarAsync(AtualizarUsuarioEmpresaRequest request);
     }
 }
