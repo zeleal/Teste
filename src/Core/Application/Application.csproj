@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\EmpresaRequest\" />
     <Folder Include="Requests\UsuarioEmpresaRequests\" />
   </ItemGroup>
 
