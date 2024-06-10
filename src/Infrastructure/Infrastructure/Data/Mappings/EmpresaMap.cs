@@ -35,6 +35,8 @@ namespace Infrastructure.Data.Mappings
 
             builder.HasIndex(em => em.CNPJ)
                 .IsUnique();
+
+            builder.ToTable("Empresas");
         }
     }
 }

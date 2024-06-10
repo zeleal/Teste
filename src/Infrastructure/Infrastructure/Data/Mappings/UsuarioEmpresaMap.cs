@@ -20,6 +20,9 @@ namespace Infrastructure.Data.Mappings
             builder.HasOne(ue => ue.Empresa)
                 .WithMany(em => em.UsuarioEmpresas)
                 .HasForeignKey(ue => ue.EmpresaId);
+
+            builder.ToTable("UsuarioEmpresas");
+
         }
     }
 }

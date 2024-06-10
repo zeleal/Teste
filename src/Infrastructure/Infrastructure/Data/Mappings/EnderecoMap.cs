@@ -39,6 +39,8 @@ namespace Infrastructure.Data.Mappings
             builder.HasOne(e => e.Cidade)
                 .WithMany(c => c.Enderecos)
                 .HasForeignKey(e => e.CidadeId);
+
+            builder.ToTable("Enderecos");
         }
     }
 }
