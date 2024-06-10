@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces;
 using Application.Requests;
-using Application.Requests.EmpresaRequests;
 using Application.Requests.EnderecoRequests;
 using Ardalis.Result;
 using AutoMapper;
