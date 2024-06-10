@@ -20,6 +20,6 @@ namespace Domain.Entities
         public int Ibge { get; private init; }
 
         public Estado Estado { get; private init; }
-        public Endereco Endereco { get; private init; }
+        public IReadOnlyList<Endereco> Enderecos { get; private init; }
     }
 }
