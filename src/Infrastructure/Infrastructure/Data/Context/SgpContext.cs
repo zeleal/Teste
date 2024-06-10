@@ -21,6 +21,11 @@ public sealed class SgpContext : DbContext
     public DbSet<Estado> Estados => Set<Estado>();
     public DbSet<Regiao> Regioes => Set<Regiao>();
 
+    public DbSet<Empresa> Empresas => Set<Empresa>();
+    public DbSet<Usuario> Usuarios => Set<Usuario>();
+    public DbSet<UsuarioEmpresa> UsuarioEmpresas => Set<UsuarioEmpresa>();
+    public DbSet<Endereco> Enderecos => Set<Endereco>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         if (!string.IsNullOrWhiteSpace(_collation))
