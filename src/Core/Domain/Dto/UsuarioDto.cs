@@ -3,10 +3,11 @@
     public class UsuarioDto
     {
         public Guid Id { get; set; }
-        public Guid EstadoId { get; private init; }
-        public string Rua { get; private init; }
-        public string Bairro { get; private init; }
-        public string Complemento { get; private init; }
-        public string Cep { get; private init; }
+        public string Nome { get; private init; }
+        public int Cpf { get; private init; }
+        public string NomeDaMae { get; private init; }
+        public string NomeDoPai { get; private init; }
+        public string Email { get; private init; }
+        public DateTime DataNascimento { get; private init; }
     }
 }
