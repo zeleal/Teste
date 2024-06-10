@@ -57,5 +57,21 @@ namespace Infrastructure.Data.Repositories
                 .Include(ue => ue.Empresa)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(int cpf)
+            => await DbSet
+                .AsNoTrackingWithIdentityResolution()
+                .Where(ue => ue.Usuario.Cpf == cpf)
+                .Select(ue => ue.Empresa)
+                .OrderBy(e => e.CNPJ)
+                .ToListAsync();
+
+        public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresaAsync(string cnpj)
+            => await DbSet
+                .AsNoTrackingWithIdentityResolution()
+                .Where(ue => ue.Empresa.CNPJ == cnpj)
+                .Select(ue => ue.Usuario)
+                .OrderBy(u => u.Cpf)
+                .ToListAsync();
     }
 }
