@@ -10,8 +10,8 @@ namespace Domain.Entities
     public class UsuarioEmpresa : BaseEntity
     {
         public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
+        //public Usuario Usuario { get; set; }
         public Guid EmpresaId { get; set; }
-        public Empresa Empresa { get; set; }
+        //public Empresa Empresa { get; set; }
     }
 }

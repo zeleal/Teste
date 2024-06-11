@@ -4,9 +4,9 @@ namespace Domain.Entities
 {
     public class Endereco : BaseEntity
     {
-        public Endereco(Guid usuarioId, Guid cidadeId, string rua, string bairro, string complemento, string cep)
+        public Endereco(/*Usuario usuarioId, Guid cidadeId,*/ string rua, string bairro, string complemento, string cep)
         {
-            UsuarioId = usuarioId;
+            //Usuario = usuarioId;
             //CidadeId = cidadeId;
             Rua = rua;
             Bairro = bairro;
@@ -18,8 +18,8 @@ namespace Domain.Entities
         {
         }
 
-        public Guid UsuarioId { get; set; }
-        public Guid CidadeId { get; set; }
+        //public Guid UsuarioId { get; set; }
+        //public Guid CidadeId { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public string Complemento { get; set; }
@@ -27,6 +27,6 @@ namespace Domain.Entities
 
         /* EF Relations */
         public Usuario Usuario { get; set; }
-        public Cidade Cidade { get; set; }
+        //public Cidade Cidade { get; set; }
     }
 }

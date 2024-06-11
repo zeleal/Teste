@@ -1,7 +1,6 @@
-﻿using Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
+using Domain.Entities;
 using Infrastructure.Extensions;
 
 namespace Infrastructure.Data.Mappings
@@ -45,8 +44,8 @@ namespace Infrastructure.Data.Mappings
                 .HasMaxLength(11)
                 .IsUnicode(false);
 
-            //builder.HasIndex(u => u.Cpf)
-            //    .IsUnique();
+            //builder.HasOne(f => f.Endereco)
+            //    .WithOne(e => e.Usuario);
 
             //builder.HasOne(u => u.Endereco)
             //    .WithOne(e => e.Usuario)

@@ -21,7 +21,7 @@ namespace Application.Services
             _repository = repository;
         }
 
-        public async Task<UsuarioDto> AdicionarAsync(AdicionarRequest request)
+        public async Task<Usuario> AdicionarAsync(AdicionarRequest request)
         {
             await request.ValidateAsync();
             if (!request.ValidationResult.IsValid)
@@ -29,8 +29,9 @@ namespace Application.Services
                 throw new ValidationException(request.ValidationResult.Errors);
             }
 
-            await _repository.AdicionarAsync(_mapper.Map<Usuario>(request.Usuario));
-            return new UsuarioDto();
+            await _repository.AdicionarAsync(request.Usuario);
+
+            return request.Usuario;
         }
 
         public async Task<UsuarioDto> AtualizarAsync(AtualizarRequest request)

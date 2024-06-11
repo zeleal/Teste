@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Dto;
 
 namespace Infrastructure.Data.Repositories
 {
@@ -22,7 +23,15 @@ namespace Infrastructure.Data.Repositories
 
         public async Task AdicionarAsync(UsuarioEmpresa usuarioEmpresa)
         {
-            await _context.UsuarioEmpresas.AddAsync(usuarioEmpresa);
+            var novaEntidade = new UsuarioEmpresa()
+            {
+                UsuarioId = usuarioEmpresa.UsuarioId,
+                EmpresaId = usuarioEmpresa.EmpresaId,
+            };
+
+
+
+            await _context.UsuarioEmpresas.AddAsync(novaEntidade);
             await _context.SaveChangesAsync();
         }
 
@@ -32,46 +41,47 @@ namespace Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task ExcluirAsync(Guid usuarioId, Guid empresaId)
-        {
-            var usuarioEmpresa = await ObterPorIdAsync(usuarioId, empresaId);
-            if (usuarioEmpresa != null)
-            {
-                _context.UsuarioEmpresas.Remove(usuarioEmpresa);
-                await _context.SaveChangesAsync();
-            }
-        }
+        //public async Task ExcluirAsync(Guid usuarioId, Guid empresaId)
+        //{
+        //    var usuarioEmpresa = await ObterPorIdAsync(usuarioId, empresaId);
+        //    if (usuarioEmpresa != null)
+        //    {
+        //        _context.UsuarioEmpresas.Remove(usuarioEmpresa);
+        //        await _context.SaveChangesAsync();
+        //    }
+        //}
 
-        public async Task<UsuarioEmpresa> ObterPorIdAsync(Guid usuarioId, Guid empresaId)
-        {
-            return await _context.UsuarioEmpresas
-                       .Include(ue => ue.Usuario)
-                       .Include(ue => ue.Empresa)
-                       .FirstOrDefaultAsync(ue => ue.UsuarioId == usuarioId && ue.EmpresaId == empresaId);
-        }
+        //public async Task<UsuarioEmpresa> ObterPorIdAsync(Guid usuarioId, Guid empresaId)
+        //{
 
-        public async Task<IEnumerable<UsuarioEmpresa>> ObterTodosAsync()
-        {
-            return await _context.UsuarioEmpresas
-                .Include(ue => ue.Usuario)
-                .Include(ue => ue.Empresa)
-                .ToListAsync();
-        }
+        //    return await _context.UsuarioEmpresas
+        //               .Include(ue => ue.Usuario)
+        //               .Include(ue => ue.Empresa)
+        //               .FirstOrDefaultAsync(ue => ue.Usuario.Id == usuarioId && ue.Empresa.Id == empresaId);
+        //}
 
-        public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(string cpf)
-            => await DbSet
-                .AsNoTrackingWithIdentityResolution()
-                .Where(ue => ue.Usuario.Cpf == cpf)
-                .Select(ue => ue.Empresa)
-                .OrderBy(e => e.CNPJ)
-                .ToListAsync();
+        //public async Task<IEnumerable<UsuarioEmpresa>> ObterTodosAsync()
+        //{
+        //    return await _context.UsuarioEmpresas
+        //        .Include(ue => ue.Usuario)
+        //        .Include(ue => ue.Empresa)
+        //        .ToListAsync();
+        //}
 
-        public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresaAsync(string cnpj)
-            => await DbSet
-                .AsNoTrackingWithIdentityResolution()
-                .Where(ue => ue.Empresa.CNPJ == cnpj)
-                .Select(ue => ue.Usuario)
-                .OrderBy(u => u.Cpf)
-                .ToListAsync();
+        //public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(string cpf)
+        //    => await DbSet
+        //        .AsNoTrackingWithIdentityResolution()
+        //        .Where(ue => ue.Usuario.Cpf == cpf)
+        //        .Select(ue => ue.Empresa)
+        //        .OrderBy(e => e.CNPJ)
+        //        .ToListAsync();
+
+        //public async Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresaAsync(string cnpj)
+        //    => await DbSet
+        //        .AsNoTrackingWithIdentityResolution()
+        //        .Where(ue => ue.Empresa.CNPJ == cnpj)
+        //        .Select(ue => ue.Usuario)
+        //        .OrderBy(u => u.Cpf)
+        //        .ToListAsync();
     }
 }

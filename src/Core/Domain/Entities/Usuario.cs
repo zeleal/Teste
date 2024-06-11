@@ -9,8 +9,9 @@ namespace Domain.Entities
 {
     public class Usuario : BaseEntity
     {
-        public Usuario(string nome, string cpf, string nomeDaMae, string nomeDoPai, string email, DateTime dataNascimento)
+        public Usuario(/*Endereco endereco,*/ string nome, string cpf, string nomeDaMae, string nomeDoPai, string email, DateTime dataNascimento)
         {
+            //Endereco = endereco;
             Nome = nome;
             Cpf = cpf;
             NomeDaMae = nomeDaMae;

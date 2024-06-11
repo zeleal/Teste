@@ -7,9 +7,9 @@ namespace Application.Requests.UsuarioEmpresaRequests;
 
 public class AdicionarUsuarioEmpresaRequest : BaseRequestWithValidation
 {
-    public AdicionarUsuarioEmpresaRequest(UsuarioEmpresaDto usuarioEmpresa) => UsuarioEmpresa = usuarioEmpresa;
+    public AdicionarUsuarioEmpresaRequest(UsuarioEmpresa usuarioEmpresa) => UsuarioEmpresa = usuarioEmpresa;
 
-    public UsuarioEmpresaDto UsuarioEmpresa { get; }
+    public UsuarioEmpresa UsuarioEmpresa { get; }
 
     public override async Task ValidateAsync()
         => ValidationResult = await LazyValidator.ValidateAsync<AdicionarUsuarioEmpresaRequestValidator>(this);

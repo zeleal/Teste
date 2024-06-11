@@ -48,21 +48,21 @@ namespace Web.Controllers
         /// <response code="400">ID de Usuario não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhum Usuario é encontrado.</response>
         //[Route("AtualizarUsuario")]
-        //[HttpPut("{id}")]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> AtualizarUsuario(Guid id, [FromBody] Usuario request)
-        //{
-        //    if (id != request.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AtualizarUsuario(Guid id, [FromBody] Usuario request)
+        {
+            if (id != request.Id)
+            {
+                return BadRequest();
+            }
 
-        //    var empresa = await _service.AtualizarAsync(new AtualizarRequest(request));
+            var empresa = await _service.AtualizarAsync(new AtualizarRequest(request));
 
-        //    return Ok(new { empresa });
-        //}
+            return Ok(new { empresa });
+        }
 
         /// <summary>
         /// Obtém uma lista com todos os Usuarios.
