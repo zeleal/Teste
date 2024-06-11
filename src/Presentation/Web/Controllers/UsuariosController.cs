@@ -3,6 +3,7 @@ using Application.Requests;
 using Application.Requests.EmpresaRequests;
 using Application.Requests.UsuarioRequests;
 using Domain.Dto;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using Web.Extensions;
@@ -24,17 +25,18 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Adiciona novo Usuario.</response>
         /// <response code="400">Erro ao adicionar Usuario.</response>
+        [Route("AdicionarUsuario")]
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarUsuario([FromBody] AdicionarRequest request)
+        public async Task<IActionResult> AdicionarUsuario([FromBody] UsuarioDto request)
         {
-            var usuario = await _service.AdicionarAsync(request);
+            var usuario = await _service.AdicionarAsync(new AdicionarRequest(request));
             if (usuario == null)
             {
                 return BadRequest();
             }
-            return CreatedAtAction(nameof(AdicionarRequest), new { id = usuario.Id }, usuario);
+            return Ok(new { usuario });
         }
 
         /// <summary>
@@ -43,20 +45,21 @@ namespace Web.Controllers
         /// <response code="200">Atualiza o Usuario.</response>
         /// <response code="400">ID de Usuario não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhum Usuario é encontrado.</response>
+        [Route("AtualizarUsuario")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AtualizarUsuario(Guid id, [FromBody] AtualizarRequest request)
+        public async Task<IActionResult> AtualizarUsuario(Guid id, [FromBody] UsuarioDto request)
         {
-            if (id != request.Usuario.Id)
+            if (id != request.Id)
             {
                 return BadRequest();
             }
 
-            var usuario = await _service.AtualizarAsync(request);
+            var usuario = await _service.AtualizarAsync(new AtualizarRequest(request));
 
-            return Ok(usuario);
+            return Ok(new { usuario });
         }
 
         /// <summary>

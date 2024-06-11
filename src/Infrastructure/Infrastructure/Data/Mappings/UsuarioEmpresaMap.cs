@@ -11,7 +11,7 @@ namespace Infrastructure.Data.Mappings
         {
             builder.ConfigureBaseEntity();
 
-            builder.HasKey(ue => new { ue.UsuarioId, ue.EmpresaId });
+            //builder.HasKey(ue => new { ue.UsuarioId, ue.EmpresaId });
 
             builder.HasOne(ue => ue.Usuario)
                 .WithMany(u => u.UsuarioEmpresas)

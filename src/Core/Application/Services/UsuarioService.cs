@@ -4,6 +4,7 @@ using Application.Requests.UsuarioRequests;
 using Ardalis.Result;
 using AutoMapper;
 using Domain.Dto;
+using Domain.Entities;
 using Domain.Repositories;
 using FluentValidation;
 
@@ -28,8 +29,7 @@ namespace Application.Services
                 throw new ValidationException(request.ValidationResult.Errors);
             }
 
-            await _repository.AdicionarAsync(request.Usuario);
-
+            await _repository.AdicionarAsync(_mapper.Map<Usuario>(request.Usuario));
             return new UsuarioDto();
         }
 
@@ -41,7 +41,7 @@ namespace Application.Services
                 throw new ValidationException(request.ValidationResult.Errors);
             }
 
-            await _repository.AtualizarAsync(request.Usuario);
+            await _repository.AtualizarAsync(_mapper.Map<Usuario>(request.Usuario));
 
             return new UsuarioDto();
         }

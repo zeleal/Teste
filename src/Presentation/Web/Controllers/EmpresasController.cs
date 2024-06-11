@@ -25,17 +25,19 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Adiciona nova Empresa.</response>
         /// <response code="400">Erro ao adicionar empresa.</response>
+        [Route("AdicionarEmpresa")]
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarEmpresa([FromBody] AdicionarEmpresaRequests request)
+        public async Task<IActionResult> AdicionarEmpresa([FromBody] EmpresaDto request)
         {
-            var empresa = await _service.AdicionarAsync(request);
+            var empresa = await _service.AdicionarAsync(new AdicionarEmpresaRequests(request));
+
             if (empresa == null)
             {
                 return BadRequest();
             }
-            return CreatedAtAction(nameof(AdicionarEmpresaRequests), new { id = empresa.Id }, empresa);
+            return Ok(new { empresa });
         }
 
         /// <summary>
@@ -44,20 +46,21 @@ namespace Web.Controllers
         /// <response code="200">Atualiza a Empresa.</response>
         /// <response code="400">ID de empresa não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhuma Empresa é encontrada.</response>
+        [Route("AtualizarEmpresa")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AtualizarEmpresa(Guid id, [FromBody] AtualizarEmpresaRequest request)
+        public async Task<IActionResult> AtualizarEmpresa(Guid id, [FromBody] EmpresaDto request)
         {
-            if (id != request.Empresa.Id)
+            if (id != request.Id)
             {
                 return BadRequest();
             }
 
-            var empresa = await _service.AtualizarAsync(request);
+            var empresa = await _service.AtualizarAsync(new AtualizarEmpresaRequest(request));
 
-            return Ok(empresa);
+            return Ok(new { empresa });
         }
 
         /// <summary>

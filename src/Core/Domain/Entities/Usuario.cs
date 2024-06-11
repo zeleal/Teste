@@ -9,6 +9,20 @@ namespace Domain.Entities
 {
     public class Usuario : BaseEntity
     {
+        public Usuario(string nome, int cpf, string nomeDaMae, string nomeDoPai, string email, DateTime dataNascimento)
+        {
+            Nome = nome;
+            Cpf = cpf;
+            NomeDaMae = nomeDaMae;
+            NomeDoPai = nomeDoPai;
+            Email = email;
+            DataNascimento = dataNascimento;
+        }
+
+        private Usuario() // ORM
+        {
+        }
+
         public string Nome { get; set; }
         public int Cpf { get; set; }
         public string NomeDaMae { get; set; }

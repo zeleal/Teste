@@ -4,6 +4,7 @@ using Application.Requests.EnderecoRequests;
 using Ardalis.Result;
 using AutoMapper;
 using Domain.Dto;
+using Domain.Entities;
 using Domain.Repositories;
 using FluentValidation;
 
@@ -28,7 +29,7 @@ public class EnderecoService : IEnderecoService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AdicionarAsync(request.Endereco);
+        await _repository.AdicionarAsync(_mapper.Map<Endereco>(request.Endereco));
 
         return new EnderecoDto();
     }
@@ -41,7 +42,7 @@ public class EnderecoService : IEnderecoService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AtualizarAsync(request.Endereco);
+        await _repository.AtualizarAsync(_mapper.Map<Endereco>(request.Endereco));
 
         return new EnderecoDto();
     }

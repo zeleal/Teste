@@ -4,6 +4,7 @@ using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using AutoMapper;
 using Domain.Dto;
+using Domain.Entities;
 using Domain.Repositories;
 using FluentValidation;
 
@@ -28,7 +29,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AdicionarAsync(request.UsuarioEmpresa);
+        await _repository.AdicionarAsync(_mapper.Map<UsuarioEmpresa>(request.UsuarioEmpresa));
 
         return new UsuarioEmpresaDto();
     }
@@ -41,7 +42,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AtualizarAsync(request.UsuarioEmpresa);
+        await _repository.AtualizarAsync(_mapper.Map<UsuarioEmpresa>(request.UsuarioEmpresa));
 
         return new UsuarioEmpresaDto();
     }

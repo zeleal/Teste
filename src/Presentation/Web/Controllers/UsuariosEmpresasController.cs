@@ -3,6 +3,7 @@ using Application.Requests.EmpresaRequests;
 using Application.Requests.UsuarioEmpresaRequests;
 using Application.Services;
 using Domain.Dto;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using Web.Extensions;
@@ -49,17 +50,18 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Adiciona novo vinculo Usuario e Empresa.</response>
         /// <response code="400">Erro ao adicionar Vinculo Usuario/Empresa.</response>
+        [Route("AdicionarUsuarioEmpresa")]
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarUsuarioEmpresa([FromBody] AdicionarUsuarioEmpresaRequest request)
+        public async Task<IActionResult> AdicionarUsuarioEmpresa([FromBody] UsuarioEmpresaDto request)
         {
-            var usuarioEmpresa = await _service.AdicionarAsync(request);
+            var usuarioEmpresa = await _service.AdicionarAsync(new AdicionarUsuarioEmpresaRequest(request));
             if (usuarioEmpresa == null)
             {
                 return BadRequest();
             }
-            return CreatedAtAction(nameof(AdicionarUsuarioEmpresaRequest), new { id = usuarioEmpresa.Id }, usuarioEmpresa);
+            return Ok(new { usuarioEmpresa });
         }
 
         /// <summary>
