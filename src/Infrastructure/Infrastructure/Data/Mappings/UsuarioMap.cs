@@ -14,6 +14,10 @@ namespace Infrastructure.Data.Mappings
 
             builder.HasKey(u => u.Id);
 
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("NEWID()");
+
             builder.Property(u => u.Nome)
                 .IsRequired()
                 .HasMaxLength(100)

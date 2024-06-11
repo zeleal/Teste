@@ -12,6 +12,9 @@ namespace Infrastructure.Data.Mappings
             builder.ConfigureBaseEntity();
 
             //builder.HasKey(ue => new { ue.UsuarioId, ue.EmpresaId });
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("NEWID()");
 
             builder.HasOne(ue => ue.Usuario)
                 .WithMany(u => u.UsuarioEmpresas)

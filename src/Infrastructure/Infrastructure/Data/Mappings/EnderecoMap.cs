@@ -16,6 +16,10 @@ namespace Infrastructure.Data.Mappings
         {
             builder.ConfigureBaseEntity();
 
+            builder.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("NEWID()");
+
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Rua)
