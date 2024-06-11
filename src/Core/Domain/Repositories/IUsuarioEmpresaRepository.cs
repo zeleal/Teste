@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Shared.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories
 {
-    public interface IUsuarioEmpresaRepository
+    public interface IUsuarioEmpresaRepository : IRepository
     {
         Task<UsuarioEmpresa> ObterPorIdAsync(Guid usuarioId, Guid empresaId);
         Task<IEnumerable<UsuarioEmpresa>> ObterTodosAsync();
