@@ -15,6 +15,6 @@ namespace Domain.Entities
 
 
         /* EF Relations */
-        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; } = new List<UsuarioEmpresa>();
+        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
     }
 }

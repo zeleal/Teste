@@ -19,6 +19,6 @@ namespace Domain.Entities
 
         /* EF Relations */
         public Endereco Endereco { get; set; }
-        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; } = new List<UsuarioEmpresa>();
+        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
     }
 }
