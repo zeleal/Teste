@@ -12,7 +12,7 @@ namespace Application.Interfaces
         Task<Result<EmpresaDto>> ObterPorIdAsync(GetByIdRequest request);
         Task<EmpresaDto> ExcluirAsync(ExcluirEmpresaRequest request);
         Task<Result<IEnumerable<EmpresaDto>>> ObterTodosAsync();
-        Task<Empresa> AdicionarAsync(AdicionarEmpresaRequests request);
+        Task<EmpresaDto> AdicionarAsync(AdicionarEmpresaRequests request);
         Task<EmpresaDto> AtualizarAsync(AtualizarEmpresaRequest request);
     }
 }

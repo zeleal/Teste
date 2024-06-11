@@ -28,10 +28,10 @@ namespace Web.Controllers
         /// <response code="400">Erro ao adicionar empresa.</response>
         //[Route("AdicionarEmpresa")]
         [HttpPost]
-        [ProducesResponseType(typeof(ApiResponse<Empresa>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<EmpresaDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarEmpresa([FromBody] Empresa request)
+        public async Task<IActionResult> AdicionarEmpresa([FromBody] EmpresaDto request)
         {
             var empresa = await _service.AdicionarAsync(new AdicionarEmpresaRequests(request));
 
@@ -49,13 +49,14 @@ namespace Web.Controllers
         /// <response code="400">ID de empresa não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhuma Empresa é encontrada.</response>
         //[Route("AtualizaEmpresa")]
-        [HttpPut("{id}")]
+        [HttpPut]
+        [ProducesResponseType(typeof(ApiResponse<EmpresaDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AtualizarEmpresa(Guid id, [FromBody] Empresa request)
+        public async Task<IActionResult> AtualizarEmpresa([FromBody] EmpresaDto request)
         {
-            if (id != request.Id)
+            if (request == null)
             {
                 return BadRequest();
             }

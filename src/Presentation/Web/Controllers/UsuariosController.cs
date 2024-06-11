@@ -27,10 +27,10 @@ namespace Web.Controllers
         /// <response code="400">Erro ao adicionar Usuario.</response>
         //[Route("AdicionarUsuario")]
         [HttpPost]
-        [ProducesResponseType(typeof(ApiResponse<Usuario>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<UsuarioDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarUsuarios([FromBody] Usuario request)
+        public async Task<IActionResult> AdicionarUsuarios([FromBody] UsuarioDto request)
         {
             var usuario = await _service.AdicionarAsync(new AdicionarRequest(request));
 

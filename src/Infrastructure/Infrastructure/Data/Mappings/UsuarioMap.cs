@@ -47,9 +47,9 @@ namespace Infrastructure.Data.Mappings
             //builder.HasOne(f => f.Endereco)
             //    .WithOne(e => e.Usuario);
 
-            //builder.HasOne(u => u.Endereco)
-            //    .WithOne(e => e.Usuario)
-            //    .HasForeignKey<Endereco>(e => e.UsuarioId);
+            builder.HasOne(u => u.Endereco)
+                .WithOne(e => e.Usuario)
+                .HasForeignKey<Endereco>(e => e.UsuarioId);
 
             builder.ToTable("Usuarios");
         }

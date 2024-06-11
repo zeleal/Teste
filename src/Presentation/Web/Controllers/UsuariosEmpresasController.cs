@@ -55,7 +55,7 @@ namespace Web.Controllers
         [ProducesResponseType(typeof(ApiResponse<UsuarioEmpresa>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarEmpresa([FromBody] UsuarioEmpresa request)
+        public async Task<IActionResult> AdicionarUsuarioEmpresa([FromBody] UsuarioEmpresa request)
         {
             var usuarioEmpresa = await _service.AdicionarAsync(new AdicionarUsuarioEmpresaRequest(request));
 
