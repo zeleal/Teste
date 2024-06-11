@@ -15,6 +15,11 @@ namespace Application.Mapper
             CreateMap<UsuarioEmpresa, UsuarioEmpresaDto>(MemberList.Destination);
             CreateMap<Endereco, EnderecoDto>(MemberList.Destination);
             CreateMap<Empresa, EmpresaDto>(MemberList.Destination);
+
+            //CreateMap<UsuarioDto, Usuario>(MemberList.Destination);
+            //CreateMap<UsuarioEmpresaDto, UsuarioEmpresa>(MemberList.Destination);
+            //CreateMap<EnderecoDto, Endereco>(MemberList.Destination);
+            //CreateMap<EmpresaDto, Empresa>(MemberList.Destination);
         }
     }
 }

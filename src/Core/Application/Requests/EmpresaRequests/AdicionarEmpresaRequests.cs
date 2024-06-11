@@ -7,9 +7,9 @@ namespace Application.Requests.EmpresaRequests;
 
 public class AdicionarEmpresaRequests : BaseRequestWithValidation
 {
-    public AdicionarEmpresaRequests(EmpresaDto empresa) => Empresa = empresa;
+    public AdicionarEmpresaRequests(Empresa empresa) => Empresa = empresa;
 
-    public EmpresaDto Empresa { get; }
+    public Empresa Empresa { get; }
     public override async Task ValidateAsync()
         => ValidationResult = await LazyValidator.ValidateAsync<AdicionarEmpresaRequestsValidator>(this);
 }

@@ -6,6 +6,7 @@ using Application.Services;
 using Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
+using Domain.Entities;
 using Web.Extensions;
 using Web.Models;
 
@@ -25,11 +26,12 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Adiciona nova Empresa.</response>
         /// <response code="400">Erro ao adicionar empresa.</response>
-        [Route("AdicionarEmpresa")]
+        //[Route("AdicionarEmpresa")]
         [HttpPost]
+        [ProducesResponseType(typeof(ApiResponse<Empresa>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AdicionarEmpresa([FromBody] EmpresaDto request)
+        public async Task<IActionResult> AdicionarEmpresa([FromBody] Empresa request)
         {
             var empresa = await _service.AdicionarAsync(new AdicionarEmpresaRequests(request));
 
@@ -46,7 +48,7 @@ namespace Web.Controllers
         /// <response code="200">Atualiza a Empresa.</response>
         /// <response code="400">ID de empresa não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhuma Empresa é encontrada.</response>
-        [Route("AtualizarEmpresa")]
+        //[Route("AtualizaEmpresa")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]

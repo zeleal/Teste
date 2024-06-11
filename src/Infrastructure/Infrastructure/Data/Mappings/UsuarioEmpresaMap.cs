@@ -17,9 +17,9 @@ namespace Infrastructure.Data.Mappings
                 .WithMany(u => u.UsuarioEmpresas)
                 .HasForeignKey(ue => ue.UsuarioId);
 
-            builder.HasOne(ue => ue.Empresa)
-                .WithMany(em => em.UsuarioEmpresas)
-                .HasForeignKey(ue => ue.EmpresaId);
+            //builder.HasOne(ue => ue.Empresa)
+            //    .WithMany(em => em.UsuarioEmpresas)
+            //    .HasForeignKey(ue => ue.EmpresaId);
 
             builder.ToTable("UsuarioEmpresas");
 

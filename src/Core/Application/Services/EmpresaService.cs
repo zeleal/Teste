@@ -21,7 +21,7 @@ public class EmpresaService : IEmpresaService
         _repository = repository;
     }
 
-    public async Task<EmpresaDto> AdicionarAsync(AdicionarEmpresaRequests request)
+    public async Task<Empresa> AdicionarAsync(AdicionarEmpresaRequests request)
     {
         await request.ValidateAsync();
         if (!request.ValidationResult.IsValid)
@@ -29,9 +29,9 @@ public class EmpresaService : IEmpresaService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AdicionarAsync(_mapper.Map<Empresa>(request.Empresa));
+        await _repository.AdicionarAsync(request.Empresa);
 
-        return new EmpresaDto();
+        return request.Empresa;
     }
 
     public async Task<EmpresaDto> AtualizarAsync(AtualizarEmpresaRequest request)
