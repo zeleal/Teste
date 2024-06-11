@@ -7,7 +7,6 @@ namespace Application.Requests.UsuarioEmpresaRequests
     {
         public ObterEmpresaPorUsuarioRequestValidator()
             => RuleFor(req => req.Cpf)
-            .NotEmpty()
-            .GreaterThan(0);
+            .NotEmpty();
     }
 }

@@ -2,6 +2,7 @@
 using Application.Requests.UsuarioRequests;
 using Ardalis.Result;
 using Domain.Dto;
+using Domain.Entities;
 using Shared.Abstractions;
 
 namespace Application.Interfaces
@@ -11,7 +12,7 @@ namespace Application.Interfaces
         Task<Result<UsuarioDto>> ObterPorIdAsync(GetByIdRequest request);
         Task<UsuarioDto> ExcluirAsync(ExcluirRequest request);
         Task<Result<IEnumerable<UsuarioDto>>> ObterTodosAsync();
-        Task<UsuarioDto> AdicionarAsync(AdicionarRequest request);
+        Task<Usuario> AdicionarAsync(AdicionarRequest request);
         Task<UsuarioDto> AtualizarAsync(AtualizarRequest request);
     }
 }

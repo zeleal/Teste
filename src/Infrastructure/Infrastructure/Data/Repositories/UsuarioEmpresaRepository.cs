@@ -58,7 +58,7 @@ namespace Infrastructure.Data.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(int cpf)
+        public async Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(string cpf)
             => await DbSet
                 .AsNoTrackingWithIdentityResolution()
                 .Where(ue => ue.Usuario.Cpf == cpf)

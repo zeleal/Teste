@@ -9,7 +9,7 @@ namespace Domain.Entities
 {
     public class Usuario : BaseEntity
     {
-        public Usuario(string nome, int cpf, string nomeDaMae, string nomeDoPai, string email, DateTime dataNascimento)
+        public Usuario(string nome, string cpf, string nomeDaMae, string nomeDoPai, string email, DateTime dataNascimento)
         {
             Nome = nome;
             Cpf = cpf;
@@ -24,7 +24,7 @@ namespace Domain.Entities
         }
 
         public string Nome { get; set; }
-        public int Cpf { get; set; }
+        public string Cpf { get; set; }
         public string NomeDaMae { get; set; }
         public string NomeDoPai { get; set; }
         public DateTime DataNascimento { get; set; }
@@ -32,7 +32,7 @@ namespace Domain.Entities
 
 
         /* EF Relations */
-        public Endereco Endereco { get; set; }
-        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
+        //public Endereco Endereco { get; set; }
+        //public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
     }
 }

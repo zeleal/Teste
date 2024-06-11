@@ -7,7 +7,7 @@ namespace Domain.Entities
         public Endereco(Guid usuarioId, Guid cidadeId, string rua, string bairro, string complemento, string cep)
         {
             UsuarioId = usuarioId;
-            CidadeId = cidadeId;
+            //CidadeId = cidadeId;
             Rua = rua;
             Bairro = bairro;
             Complemento = complemento;

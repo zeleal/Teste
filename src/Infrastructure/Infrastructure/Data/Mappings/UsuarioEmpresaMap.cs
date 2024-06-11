@@ -16,9 +16,9 @@ namespace Infrastructure.Data.Mappings
                 .ValueGeneratedOnAdd()
                 .HasDefaultValueSql("NEWID()");
 
-            builder.HasOne(ue => ue.Usuario)
-                .WithMany(u => u.UsuarioEmpresas)
-                .HasForeignKey(ue => ue.UsuarioId);
+            //builder.HasOne(ue => ue.Usuario)
+            //    .WithMany(u => u.UsuarioEmpresas)
+            //    .HasForeignKey(ue => ue.UsuarioId);
 
             //builder.HasOne(ue => ue.Empresa)
             //    .WithMany(em => em.UsuarioEmpresas)

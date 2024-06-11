@@ -15,7 +15,7 @@ namespace Domain.Repositories
         Task AdicionarAsync(UsuarioEmpresa usuarioEmpresa);
         Task AtualizarAsync(UsuarioEmpresa usuarioEmpresa);
         Task ExcluirAsync(Guid usuarioId, Guid empresaId);
-        Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(int cpf);
+        Task<IEnumerable<Empresa>> ObterEmpresaPorUsuarioAsync(string cpf);
         Task<IEnumerable<Usuario>> ObterUsuarioPorEmpresaAsync(string cnpj);
     }
 }
