@@ -53,7 +53,7 @@ namespace Web.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AtualizarEmpresa(Guid id, [FromBody] EmpresaDto request)
+        public async Task<IActionResult> AtualizarEmpresa(Guid id, [FromBody] Empresa request)
         {
             if (id != request.Id)
             {
