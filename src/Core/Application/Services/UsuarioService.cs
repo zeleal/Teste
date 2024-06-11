@@ -5,15 +5,16 @@ using Ardalis.Result.FluentValidation;
 using AutoMapper;
 using Domain.Dto;
 using Domain.Entities;
+using Domain.Repositories;
 
 namespace Application.Services
 {
     public class UsuarioService : IUsuarioService
     {
         private readonly IMapper _mapper;
-        private readonly IUsuarioService _repository;
+        private readonly IUsuarioRepository _repository;
 
-        public UsuarioService(IMapper mapper, IUsuarioService repository)
+        public UsuarioService(IMapper mapper, IUsuarioRepository repository)
         {
             _mapper = mapper;
             _repository = repository;
@@ -25,7 +26,7 @@ namespace Application.Services
             if (!request.IsValid)
                 return Result.Invalid(request.ValidationResult.AsErrors());
 
-            var endereco = await _repository.ObterUsuarioEnderecoAsync(request);
+            var endereco = await _repository.ObterUsuarioEnderecoAsync(request.Id);
 
             if (endereco == null)
                 return Result.NotFound($"Nenhuma endereço encontrado para este usuario.");

@@ -9,9 +9,9 @@ namespace Application.Services
     public class EmpresaService : IEmpresaService
     {
         private readonly IMapper _mapper;
-        private readonly IEmpresaService _repository;
+        private readonly IEmpresaRepository _repository;
 
-        public EmpresaService(IMapper mapper, IEmpresaService repository)
+        public EmpresaService(IMapper mapper, IEmpresaRepository repository)
         {
             _mapper = mapper;
             _repository = repository;

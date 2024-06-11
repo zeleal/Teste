@@ -12,9 +12,9 @@ namespace Application.Services
     public class EnderecoService : IEnderecoService
     {
         private readonly IMapper _mapper;
-        private readonly IEnderecoService _repository;
+        private readonly IEnderecoRepository _repository;
 
-        public EnderecoService(IMapper mapper, IEnderecoService repository)
+        public EnderecoService(IMapper mapper, IEnderecoRepository repository)
         {
             _mapper = mapper;
             _repository = repository;
@@ -26,7 +26,7 @@ namespace Application.Services
             if (!request.IsValid)
                 return Result.Invalid(request.ValidationResult.AsErrors());
 
-            var endereco = await _repository.ObterEnderecoPorUsuarioAsync(request);
+            var endereco = await _repository.ObterEnderecoPorUsuarioAsync(request.Cpf);
 
             if (endereco == null)
                 return Result.NotFound($"Nenhum Endereço foi encontrado para o CPF: {request.Cpf}");
