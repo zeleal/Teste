@@ -60,10 +60,10 @@ public class EnderecoService : IEnderecoService
         return new EnderecoDto();
     }
 
-    public async Task<Result<IEnumerable<EnderecoDto>>> ObterTodosAsync()
+    public async Task<Result<IEnumerable<Endereco>>> ObterTodosAsync()
     {
         var enderecos = await _repository.ObterTodosAsync();
-        return Result.Success(_mapper.Map<IEnumerable<EnderecoDto>>(enderecos));
+        return Result.Success(_mapper.Map<IEnumerable<Endereco>>(enderecos));
     }
 
     public async Task<Result<EnderecoDto>> ObterPorIdAsync(GetByIdRequest request)

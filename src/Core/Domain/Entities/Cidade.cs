@@ -13,6 +13,7 @@ namespace Domain.Entities
 
         private Cidade() // ORM
         {
+
         }
 
         public Guid EstadoId { get; private init; }
@@ -20,6 +21,6 @@ namespace Domain.Entities
         public int Ibge { get; private init; }
 
         public Estado Estado { get; private init; }
-        public ICollection<Endereco> Enderecos { get; set; }
+        public IReadOnlyList<Endereco> Enderecos { get; private init; }
     }
 }

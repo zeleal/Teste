@@ -20,6 +20,10 @@ namespace Infrastructure.Data.Mappings
                 .ValueGeneratedOnAdd()
                 .HasDefaultValueSql("NEWID()");
 
+
+            builder.Property(e => e.CidadeId)
+                .IsRequired();
+
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Rua)
