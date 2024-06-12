@@ -3,11 +3,7 @@ using Domain.Repositories;
 using Infrastructure.Data.Context;
 using Infrastructure.Data.Repositories.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Data.Repositories
 {

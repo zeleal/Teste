@@ -19,10 +19,9 @@ namespace Infrastructure.Data.Mappings
             builder.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
                 .HasDefaultValueSql("NEWID()");
-
-
-            builder.Property(e => e.CidadeId)
-                .IsRequired();
+            
+            //builder.Property(e => e.CidadeId)
+            //    .IsRequired();
 
             builder.HasKey(e => e.Id);
 
@@ -44,9 +43,9 @@ namespace Infrastructure.Data.Mappings
                 .HasMaxLength(8)
                 .IsUnicode(false);
 
-            builder.HasOne(e => e.Cidade)
-                .WithMany(c => c.Enderecos)
-                .HasForeignKey(e => e.CidadeId);
+            //builder.HasOne(e => e.Cidade)
+            //    .WithMany(c => c.Enderecos)
+            //    .HasForeignKey(e => e.CidadeId);
 
             builder.ToTable("Enderecos");
         }

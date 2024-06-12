@@ -15,11 +15,6 @@ namespace Application.Mapper
             CreateMap<UsuarioEmpresa, UsuarioEmpresaDto>(MemberList.Destination).ReverseMap();
             CreateMap<Endereco, EnderecoDto>(MemberList.Destination).ReverseMap();
             CreateMap<Empresa, EmpresaDto>(MemberList.Destination).ReverseMap();
-
-            //CreateMap<UsuarioDto, Usuario>(MemberList.Destination);
-            //CreateMap<UsuarioEmpresaDto, UsuarioEmpresa>(MemberList.Destination);
-            //CreateMap<EnderecoDto, Endereco>(MemberList.Destination);
-            //CreateMap<EmpresaDto, Empresa>(MemberList.Destination);
         }
     }
 }
