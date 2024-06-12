@@ -10,10 +10,13 @@ using Shared.Extensions;
 using Shared.AppSettings;
 using System.Globalization;
 using System.IO.Compression;
+using System.Net;
+using System.Text.Json;
 using StackExchange.Profiling;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Resources;
 using Infrastructure.Data.Context;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -114,6 +117,45 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiniProfiler();
 app.MapControllers();
+
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        context.Response.ContentType = "application/json";
+
+        var exceptionHandlerPathFeature =
+            context.Features.Get<IExceptionHandlerPathFeature>();
+
+        if (exceptionHandlerPathFeature?.Error is ValidationException validationException)
+        {
+            var errors = validationException.Errors.Select(e => new
+            {
+                PropertyName = e.PropertyName,
+                ErrorMessage = e.ErrorMessage,
+                AttemptedValue = e.AttemptedValue
+            });
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(new
+            {
+                success = false,
+                statusCode = 400,
+                errors
+            }));
+        }
+        else
+        {
+            // Tratamento para outros tipos de exceção, se necessário
+            await context.Response.WriteAsync(JsonSerializer.Serialize(new
+            {
+                success = false,
+                statusCode = 500,
+                errors = new[] { "Um erro inesperado ocorreu. Por favor, tente novamente mais tarde." }
+            }));
+        }
+    });
+});
 
 await using var serviceScope = app.Services.CreateAsyncScope();
 await using var context = serviceScope.ServiceProvider.GetRequiredService<SgpContext>();
