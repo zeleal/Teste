@@ -24,283 +24,113 @@ namespace Web.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Entities.Cidade", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+            {
+                b.Property<Guid>("Id")
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("EstadoId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid>("EstadoId")
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Ibge")
-                        .HasColumnType("int");
+                b.Property<int>("Ibge")
+                    .HasColumnType("int");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(70)");
+                b.Property<string>("Nome")
+                    .IsRequired()
+                    .HasMaxLength(70)
+                    .IsUnicode(false)
+                    .HasColumnType("varchar(70)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("EstadoId");
+                b.HasIndex("EstadoId");
 
-                    b.HasIndex("Ibge")
-                        .IsUnique();
+                b.HasIndex("Ibge")
+                    .IsUnique();
 
-                    b.ToTable("Cidades");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Empresa", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
-
-                    b.Property<string>("CNPJ")
-                        .IsRequired()
-                        .HasMaxLength(14)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<string>("NomeFantasia")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("RazaoSocial")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CNPJ")
-                        .IsUnique();
-
-                    b.ToTable("Empresas", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.Endereco", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
-
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Cep")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(8)");
-
-                    b.Property<Guid?>("CidadeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Complemento")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Rua")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CidadeId");
-
-                    b.HasIndex("UsuarioId")
-                        .IsUnique();
-
-                    b.ToTable("Enderecos", (string)null);
-                });
+                b.ToTable("Cidades");
+            });
 
             modelBuilder.Entity("Domain.Entities.Estado", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+            {
+                b.Property<Guid>("Id")
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(75)");
+                b.Property<string>("Nome")
+                    .IsRequired()
+                    .HasMaxLength(75)
+                    .IsUnicode(false)
+                    .HasColumnType("varchar(75)");
 
-                    b.Property<Guid>("RegiaoId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid>("RegiaoId")
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Uf")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .IsUnicode(false)
-                        .HasColumnType("char(2)")
-                        .IsFixedLength();
+                b.Property<string>("Uf")
+                    .IsRequired()
+                    .HasMaxLength(2)
+                    .IsUnicode(false)
+                    .HasColumnType("char(2)")
+                    .IsFixedLength();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("RegiaoId");
+                b.HasIndex("RegiaoId");
 
-                    b.HasIndex("Uf")
-                        .IsUnique();
+                b.HasIndex("Uf")
+                    .IsUnique();
 
-                    b.ToTable("Estados");
-                });
+                b.ToTable("Estados");
+            });
 
             modelBuilder.Entity("Domain.Entities.Regiao", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+            {
+                b.Property<Guid>("Id")
+                    .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(15)");
+                b.Property<string>("Nome")
+                    .IsRequired()
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnType("varchar(15)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("Nome")
-                        .IsUnique();
+                b.HasIndex("Nome")
+                    .IsUnique();
 
-                    b.ToTable("Regioes");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Usuario", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
-
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(11)");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .IsUnicode(false)
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("NomeDaMae")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("NomeDoPai")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuarios", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.UsuarioEmpresa", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
-
-                    b.Property<Guid>("EmpresaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UsuarioEmpresas", (string)null);
-                });
+                b.ToTable("Regioes");
+            });
 
             modelBuilder.Entity("Domain.Entities.Cidade", b =>
-                {
-                    b.HasOne("Domain.Entities.Estado", "Estado")
-                        .WithMany("Cidades")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+            {
+                b.HasOne("Domain.Entities.Estado", "Estado")
+                    .WithMany("Cidades")
+                    .HasForeignKey("EstadoId")
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
 
-                    b.Navigation("Estado");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Endereco", b =>
-                {
-                    b.HasOne("Domain.Entities.Cidade", null)
-                        .WithMany("Enderecos")
-                        .HasForeignKey("CidadeId");
-
-                    b.HasOne("Domain.Entities.Usuario", "Usuario")
-                        .WithOne("Endereco")
-                        .HasForeignKey("Domain.Entities.Endereco", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
+                b.Navigation("Estado");
+            });
 
             modelBuilder.Entity("Domain.Entities.Estado", b =>
-                {
-                    b.HasOne("Domain.Entities.Regiao", "Regiao")
-                        .WithMany("Estados")
-                        .HasForeignKey("RegiaoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+            {
+                b.HasOne("Domain.Entities.Regiao", "Regiao")
+                    .WithMany("Estados")
+                    .HasForeignKey("RegiaoId")
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
 
-                    b.Navigation("Regiao");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Cidade", b =>
-                {
-                    b.Navigation("Enderecos");
-                });
+                b.Navigation("Regiao");
+            });
 
             modelBuilder.Entity("Domain.Entities.Estado", b =>
-                {
-                    b.Navigation("Cidades");
-                });
+            {
+                b.Navigation("Cidades");
+            });
 
             modelBuilder.Entity("Domain.Entities.Regiao", b =>
-                {
-                    b.Navigation("Estados");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Usuario", b =>
-                {
-                    b.Navigation("Endereco")
-                        .IsRequired();
-                });
+            {
+                b.Navigation("Estados");
+            });
 #pragma warning restore 612, 618
         }
     }
