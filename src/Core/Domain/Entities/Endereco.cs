@@ -19,7 +19,7 @@ namespace Domain.Entities
         }
 
         public Guid UsuarioId { get; set; }
-        public Guid CidadeId { get; set; }
+        //public Guid CidadeId { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public string Complemento { get; set; }
