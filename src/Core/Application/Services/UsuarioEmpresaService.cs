@@ -66,19 +66,6 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
         return Result.Success(_mapper.Map<IEnumerable<UsuarioEmpresa>>(usuarioEmpresas));
     }
 
-    //public async Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(ObterUsuarioEmpresaPorIdRequest request)
-    //{
-    //    await request.ValidateAsync();
-    //    if (!request.ValidationResult.IsValid)
-    //    {
-    //        throw new ValidationException(request.ValidationResult.Errors);
-    //    }
-
-    //    var usuarioEmpresa = await _repository.ObterPorIdAsync(request.UsuarioId,request.EmpresaId);
-
-    //    return Result.Success(_mapper.Map<UsuarioEmpresaDto>(usuarioEmpresa));
-    //}
-
     public async Task<Result<IEnumerable<EmpresaDto>>> ObterEmpresaPorUsuarioAsync(ObterEmpresaPorUsuarioRequest request)
     {
         await request.ValidateAsync();

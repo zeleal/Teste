@@ -27,7 +27,7 @@ namespace Web.Controllers
         /// <response code="200">Adiciona nova Empresa.</response>
         /// <response code="400">Erro ao adicionar empresa.</response>
         //[Route("AdicionarEmpresa")]
-        [HttpPost]
+        [HttpPost("adicionarempresa")]
         [ProducesResponseType(typeof(ApiResponse<EmpresaDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
@@ -49,7 +49,7 @@ namespace Web.Controllers
         /// <response code="400">ID de empresa não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhuma Empresa é encontrada.</response>
         //[Route("AtualizaEmpresa")]
-        [HttpPut]
+        [HttpPut("atualizarEmpresa")]
         [ProducesResponseType(typeof(ApiResponse<EmpresaDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -71,7 +71,7 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Retorna a lista de Empresas.</response>
         /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
-        [HttpGet]
+        [HttpGet("obtertodos")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(ApiResponse<IEnumerable<EmpresaDto>>), StatusCodes.Status200OK)]
@@ -88,7 +88,7 @@ namespace Web.Controllers
         /// <response code="200">Retorna a Empresa.</response>
         /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
         /// <response code="404">Quando nenhuma Empresa é encontrada.</response>
-        [HttpGet("{id:Guid}")]
+        [HttpGet("obterporid/{id:Guid}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(ApiResponse<EmpresaDto>), StatusCodes.Status200OK)]

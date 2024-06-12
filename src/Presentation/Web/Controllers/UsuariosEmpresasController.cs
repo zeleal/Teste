@@ -20,32 +20,7 @@ namespace Web.Controllers
         private readonly IUsuarioEmpresaService _service;
 
         public UsuariosEmpresasController(IUsuarioEmpresaService service) => _service = service;
-
-        /// <summary>
-        /// Obtem o Vinculo entre Usuario e Empresa.
-        /// </summary>
-        /// <response code="200">Vinculo entre Usuario e Empresa.</response>
-        /// <response code="400">ID de Usuario/Empresa não corresponde ao ID da URL</response>
-        /// <response code="404">Quando nenhum Vinculo entre Usuario/Empresa é encontrado.</response>
-        //[HttpGet("{usuarioId:guid}/{empresaId:guid}")]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> ObterPorIdAsync(Guid usuarioId, Guid empresaId)
-        //{
-        //    var request = new ObterUsuarioEmpresaPorIdRequest(usuarioId, empresaId);
-        //    var result = await _service.ObterPorIdAsync(request);
-
-        //    if (result.IsSuccess)
-        //    {
-        //        return Ok(result.Value);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
-
+        
         /// <summary>
         /// Adiciona novo vinculo Usuario e Empresa.
         /// </summary>
@@ -67,11 +42,11 @@ namespace Web.Controllers
             return Ok(new { usuarioEmpresa });
         }
 
-        ///// <summary>
-        ///// Obtém uma lista com Todos os Vinculos entre Usuario/Empresa.
-        ///// </summary>
-        ///// <response code="200">Retorna a lista com Todos os Vinculos entre Usuario/Empresa.</response>
-        ///// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
+        /// <summary>
+        /// Obtém uma lista com Todos os Vinculos entre Usuario/Empresa.
+        /// </summary>
+        /// <response code="200">Retorna a lista com Todos os Vinculos entre Usuario/Empresa.</response>
+        /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
         [HttpGet]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
@@ -81,13 +56,13 @@ namespace Web.Controllers
         public async Task<IActionResult> ObterTodosAsync()
             => (await _service.ObterTodosAsync()).ToActionResult();
 
-        /////// <summary>
-        /////// Obtém as Empresas vinculadas ao CPF.
-        /////// </summary>
-        /////// <param name="cpf">Sigle para identificar o Usuario.</param>
-        /////// <response code="200">Retorna as Empresas Vinculadas ao Usuario.</response>
-        /////// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
-        /////// <response code="404">Quando nenhuma empresa é encontrada.</response>
+        /// <summary>
+        /// Obtém as Empresas vinculadas ao CPF.
+        /// </summary>
+        /// <param name="cpf">Sigle para identificar o Usuario.</param>
+        /// <response code="200">Retorna as Empresas Vinculadas ao Usuario.</response>
+        /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
+        /// <response code="404">Quando nenhuma empresa é encontrada.</response>
         [HttpGet("ObterEmpresaPorCpf/{Cpf:alpha}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
