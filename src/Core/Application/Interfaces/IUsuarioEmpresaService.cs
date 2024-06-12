@@ -10,10 +10,10 @@ namespace Application.Interfaces
     {
         //Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(ObterUsuarioEmpresaPorIdRequest request);
         //Task<UsuarioEmpresaDto> ExcluirAsync(ExcluirUsuarioEmpresaRequest request);
-        //Task<Result<IEnumerable<UsuarioEmpresaDto>>> ObterTodosAsync();
-        Task<UsuarioEmpresa> AdicionarAsync(AdicionarUsuarioEmpresaRequest request);
+        Task<Result<IEnumerable<UsuarioEmpresa>>> ObterTodosAsync();
+        Task<UsuarioEmpresaDto> AdicionarAsync(AdicionarUsuarioEmpresaRequest request);
         Task<UsuarioEmpresaDto> AtualizarAsync(AtualizarUsuarioEmpresaRequest request);
-      //  Task<Result<EmpresaDto>> ObterEmpresaPorUsuarioAsync(ObterEmpresaPorUsuarioRequest request);
-      //  Task<Result<UsuarioDto>> ObterUsuarioPorEmpresaAsync(ObterUsuarioPorEmpresaRequest request);
+        Task<Result<IEnumerable<EmpresaDto>>> ObterEmpresaPorUsuarioAsync(ObterEmpresaPorUsuarioRequest request);
+        Task<Result<IEnumerable<UsuarioDto>>> ObterUsuarioPorEmpresaAsync(ObterUsuarioPorEmpresaRequest request);
     }
 }

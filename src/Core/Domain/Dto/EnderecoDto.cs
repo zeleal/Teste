@@ -8,9 +8,9 @@ namespace Domain.Dto
 {
     public class EnderecoDto
     {
-        public Guid Id { get; private init; }
-        //public Guid CidadeId { get; private init; }
-        //public Guid UsuarioId { get; private init; }
+        public Guid Id { get; set; }
+        public Guid CidadeId { get; set; }
+        public Guid UsuarioId { get; set; }
         public string Rua { get; private init; }
         public string Bairro { get; private init; }
         public string Complemento { get; private init; }

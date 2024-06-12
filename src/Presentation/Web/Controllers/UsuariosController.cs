@@ -26,7 +26,7 @@ namespace Web.Controllers
         /// <response code="200">Adiciona novo Usuario.</response>
         /// <response code="400">Erro ao adicionar Usuario.</response>
         //[Route("AdicionarUsuario")]
-        [HttpPost]
+        [HttpPost("Adicionar")]
         [ProducesResponseType(typeof(ApiResponse<UsuarioDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
@@ -48,20 +48,21 @@ namespace Web.Controllers
         /// <response code="400">ID de Usuario não corresponde ao ID da URL</response>
         /// <response code="404">Quando nenhum Usuario é encontrado.</response>
         //[Route("AtualizarUsuario")]
-        [HttpPut("{id}")]
+        [HttpPut("Atualizar")]
+        [ProducesResponseType(typeof(ApiResponse<UsuarioDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AtualizarUsuario(Guid id, [FromBody] Usuario request)
+        public async Task<IActionResult> AtualizarUsuario( [FromBody] UsuarioDto request)
         {
-            if (id != request.Id)
+            if (request == null)
             {
                 return BadRequest();
             }
 
-            var empresa = await _service.AtualizarAsync(new AtualizarRequest(request));
+            var usuario = await _service.AtualizarAsync(new AtualizarRequest(request));
 
-            return Ok(new { empresa });
+            return Ok(new { usuario });
         }
 
         /// <summary>
@@ -69,10 +70,10 @@ namespace Web.Controllers
         /// </summary>
         /// <response code="200">Retorna a lista de Usuarios.</response>
         /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
-        [HttpGet]
+        [HttpGet("buscartodos")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<EmpresaDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<UsuarioDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ObterTodosAsync()
@@ -85,7 +86,7 @@ namespace Web.Controllers
         /// <response code="200">Retorna o Usuario.</response>
         /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
         /// <response code="404">Quando nenhum Usuario é encontrada.</response>
-        [HttpGet("{id:Guid}")]
+        [HttpGet("obterporid/{id:Guid}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(ApiResponse<UsuarioDto>), StatusCodes.Status200OK)]

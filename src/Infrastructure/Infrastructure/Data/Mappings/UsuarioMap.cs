@@ -44,9 +44,6 @@ namespace Infrastructure.Data.Mappings
                 .HasMaxLength(11)
                 .IsUnicode(false);
 
-            //builder.HasOne(f => f.Endereco)
-            //    .WithOne(e => e.Usuario);
-
             builder.HasOne(u => u.Endereco)
                 .WithOne(e => e.Usuario)
                 .HasForeignKey<Endereco>(e => e.UsuarioId);

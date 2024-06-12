@@ -21,7 +21,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
         _repository = repository;
     }
 
-    public async Task<UsuarioEmpresa> AdicionarAsync(AdicionarUsuarioEmpresaRequest request)
+    public async Task<UsuarioEmpresaDto> AdicionarAsync(AdicionarUsuarioEmpresaRequest request)
     {
         await request.ValidateAsync();
         if (!request.ValidationResult.IsValid)
@@ -29,7 +29,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
             throw new ValidationException(request.ValidationResult.Errors);
         }
 
-        await _repository.AdicionarAsync(request.UsuarioEmpresa);
+        await _repository.AdicionarAsync(_mapper.Map<UsuarioEmpresa>(request.UsuarioEmpresa));
 
         return request.UsuarioEmpresa;
     }
@@ -60,11 +60,11 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
     //    return new UsuarioEmpresaDto();
     //}
 
-    //public async Task<Result<IEnumerable<UsuarioEmpresaDto>>> ObterTodosAsync()
-    //{
-    //    var usuarioEmpresas = await _repository.ObterTodosAsync();
-    //    return Result.Success(_mapper.Map<IEnumerable<UsuarioEmpresaDto>>(usuarioEmpresas));
-    //}
+    public async Task<Result<IEnumerable<UsuarioEmpresa>>> ObterTodosAsync()
+    {
+        var usuarioEmpresas = await _repository.ObterTodosAsync();
+        return Result.Success(_mapper.Map<IEnumerable<UsuarioEmpresa>>(usuarioEmpresas));
+    }
 
     //public async Task<Result<UsuarioEmpresaDto>> ObterPorIdAsync(ObterUsuarioEmpresaPorIdRequest request)
     //{
@@ -79,29 +79,30 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
     //    return Result.Success(_mapper.Map<UsuarioEmpresaDto>(usuarioEmpresa));
     //}
 
-    //public async Task<Result<EmpresaDto>> ObterEmpresaPorUsuarioAsync(ObterEmpresaPorUsuarioRequest request)
-    //{
-    //    await request.ValidateAsync();
-    //    if (!request.IsValid)
-    //        return Result.Invalid(request.ValidationResult.AsErrors());
+    public async Task<Result<IEnumerable<EmpresaDto>>> ObterEmpresaPorUsuarioAsync(ObterEmpresaPorUsuarioRequest request)
+    {
+        await request.ValidateAsync();
+        if (!request.IsValid)
+            return Result.Invalid(request.ValidationResult.AsErrors());
 
-    //    var empresaPorUsuario = await _repository.ObterEmpresaPorUsuarioAsync(request.Cpf);
-    //    if (empresaPorUsuario == null)
-    //        return Result.NotFound($"Nenhuma Empresa para o seguinte CPF: {request.Cpf}");
+        var empresaPorUsuario = await _repository.ObterEmpresaPorUsuarioAsync(request.Cpf);
+        if (empresaPorUsuario == null)
+            return Result.NotFound($"Nenhuma Empresa para o seguinte CPF: {request.Cpf}");
 
-    //    return Result.Success(_mapper.Map<EmpresaDto>(empresaPorUsuario));
-    //}
+        return Result.Success(_mapper.Map<IEnumerable<EmpresaDto>>(empresaPorUsuario));
+    }
 
-    //public async Task<Result<UsuarioDto>> ObterUsuarioPorEmpresaAsync(ObterUsuarioPorEmpresaRequest request)
-    //{
-    //    await request.ValidateAsync();
-    //    if (!request.IsValid)
-    //        return Result.Invalid(request.ValidationResult.AsErrors());
+    public async Task<Result<IEnumerable<UsuarioDto>>> ObterUsuarioPorEmpresaAsync(ObterUsuarioPorEmpresaRequest request)
+    {
+        await request.ValidateAsync();
+        if (!request.IsValid)
+            return Result.Invalid(request.ValidationResult.AsErrors());
 
-    //    var usuarioPorEmpresa = await _repository.ObterUsuarioPorEmpresaAsync(request.Cnpj);
-    //    if (usuarioPorEmpresa == null)
-    //        return Result.NotFound($"Nenhum Usuario para o seguinte Cnpj: {request.Cnpj}");
+        var usuarioPorEmpresa = await _repository.ObterUsuarioPorEmpresaAsync(request.Cnpj);
 
-    //    return Result.Success(_mapper.Map<UsuarioDto>(usuarioPorEmpresa));
-    //}
+        if (usuarioPorEmpresa == null)
+            return Result.NotFound($"Nenhum Usuario para o seguinte Cnpj: {request.Cnpj}");
+
+        return Result.Success(_mapper.Map<IEnumerable<UsuarioDto>>(usuarioPorEmpresa));
+    }
 }
