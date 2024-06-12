@@ -6,6 +6,8 @@ namespace Application.Requests.UsuarioEmpresaRequests
     public class ObterEmpresaPorUsuarioRequestValidator : AbstractValidator<ObterEmpresaPorUsuarioRequest>
     {
         public ObterEmpresaPorUsuarioRequestValidator()
-            => RuleFor(req => req.Cpf);
+        {
+            RuleFor(req => req.Cpf).Length(11).NotEmpty();
+        }
     }
 }

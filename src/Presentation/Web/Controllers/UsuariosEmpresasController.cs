@@ -7,6 +7,7 @@ using Domain.Dto;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
+using System.Text.RegularExpressions;
 using Web.Extensions;
 using Web.Models;
 
@@ -63,7 +64,7 @@ namespace Web.Controllers
         /// <response code="200">Retorna as Empresas Vinculadas ao Usuario.</response>
         /// <response code="400">Retorna lista de erros, se a requisição for inválida.</response>
         /// <response code="404">Quando nenhuma empresa é encontrada.</response>
-        [HttpGet("ObterEmpresaPorCpf/{Cpf:alpha}")]
+        [HttpGet("ObterEmpresaPorCpf/{Cpf}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(ApiResponse<IEnumerable<EmpresaDto>>), StatusCodes.Status200OK)]
@@ -71,7 +72,24 @@ namespace Web.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ObterEmpresasVinculadosCpf([FromRoute] string Cpf)
-            => (await _service.ObterEmpresaPorUsuarioAsync(new ObterEmpresaPorUsuarioRequest(Cpf))).ToActionResult();
+        {
+            if (Cpf == null)
+            {
+                BadRequest();
+            }
+
+            Cpf = Cpf.Replace(".", "").Replace("-", "");
+
+            if (Regex.IsMatch(Cpf, @"^[0-9]+$"))
+            {
+                return (await _service.ObterEmpresaPorUsuarioAsync(new ObterEmpresaPorUsuarioRequest(Cpf))).ToActionResult();
+            }
+            else
+            {
+                return BadRequest("O Cpf deve contem apenas números");
+            }
+
+        }
 
         /// <summary>
         /// Obtém as Usuarios vinculadas ao Cnpj.
@@ -88,6 +106,14 @@ namespace Web.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ObterUsuariosVinculadosCnpj([FromRoute] string Cnpj)
-            => (await _service.ObterUsuarioPorEmpresaAsync(new ObterUsuarioPorEmpresaRequest(Cnpj))).ToActionResult();
+        {
+            if (Cnpj == null)
+            {
+                BadRequest("O campo CNPJ não pode ser Null.");
+            }
+            Cnpj = Cnpj.Replace(".", "").Replace("-", "");
+
+            return (await _service.ObterUsuarioPorEmpresaAsync(new ObterUsuarioPorEmpresaRequest(Cnpj))).ToActionResult();
+        }
     }
 }

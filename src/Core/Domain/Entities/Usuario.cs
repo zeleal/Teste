@@ -1,6 +1,7 @@
 ﻿using Shared.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Domain.Entities
         }
 
         public string Nome { get; set; }
+        [RegularExpression("^[0-9]+$", ErrorMessage = "O campo CPF deve conter apenas números.")]
         public string Cpf { get; set; }
         public string NomeDaMae { get; set; }
         public string NomeDoPai { get; set; }

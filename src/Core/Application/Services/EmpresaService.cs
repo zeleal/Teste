@@ -44,7 +44,7 @@ public class EmpresaService : IEmpresaService
 
         await _repository.AtualizarAsync(_mapper.Map<Empresa>(request.Empresa));
 
-        return new EmpresaDto();
+        return Result.Success(request.Empresa);
     }
 
     public async Task<EmpresaDto> ExcluirAsync(ExcluirEmpresaRequest request)

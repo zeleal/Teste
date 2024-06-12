@@ -73,7 +73,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
             return Result.Invalid(request.ValidationResult.AsErrors());
 
         var empresaPorUsuario = await _repository.ObterEmpresaPorUsuarioAsync(request.Cpf);
-        if (empresaPorUsuario == null)
+        if (empresaPorUsuario.Count() == 0)
             return Result.NotFound($"Nenhuma Empresa para o seguinte CPF: {request.Cpf}");
 
         return Result.Success(_mapper.Map<IEnumerable<EmpresaDto>>(empresaPorUsuario));
@@ -87,7 +87,7 @@ public class UsuarioEmpresaService : IUsuarioEmpresaService
 
         var usuarioPorEmpresa = await _repository.ObterUsuarioPorEmpresaAsync(request.Cnpj);
 
-        if (usuarioPorEmpresa == null)
+        if (usuarioPorEmpresa.Count() == 0)
             return Result.NotFound($"Nenhum Usuario para o seguinte Cnpj: {request.Cnpj}");
 
         return Result.Success(_mapper.Map<IEnumerable<UsuarioDto>>(usuarioPorEmpresa));
